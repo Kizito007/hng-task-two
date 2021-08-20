@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>HNG Task 2</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../public/css/style.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../public/css/bootstrap.min.css'>
+</head>
+
+<body style="padding: 20px;
+    background: #fff0dc;
+    color: #062a50;">
+    <div class="container">
+        <div class="intro">
+            <h2 style="text-align: center;">Kizito's Resume</h2>
+            <p> <span>NAME: NWAKA Kizito Kelechukwu</span> <br> <span>Telephone: <a href="tel:+2349130886111"></a> +2349130886111, <a href="tel:+2347083411064"></a> +2347083411064</span> </p>
+            <p> <span>Email: nwakakelechi49@gmail.com</span> <br> <span>Address: 21rd FESTAC Town, Lagos Nigeria.</span> </p>
+            <p> <span>Twitter: <a href="https://twitter.com/kelechithe3rd">Link to my Twitter</a> </span> <br> <span>Github: <a href="https://github.com/Kizito007">Link to my Github</a> </span> </p>
+        </div> 
+        <div class="about">
+            <h3>Little about me</h3>
+            <p>
+                Kizito is a passionate student and web developer. Experienced in providing excellent services <br>
+                whilst working in busy environments. Flexible regarding hours of work including evenings and <br>
+                uses his weekend for extra-curricula activities. Keen to expand skils and knowledge and <br>
+                prepared to work in a variety of roles as required.
+            </p>
+        </div>
+        <div class="education">
+            <h3>Education</h3>
+            <p>July - October, 2020   Google Africa Developer Scholarships 2020. Mobile Web Specialist</p>
+            <p>March - May, 2020   Start.Ng Virtual Training: Backend Node.js and C#</p>
+            <p>2019 - 2023  Federal University of Technology Owerri. Pursuing a Bachelors Degree in Industrial and Applied Mathematics</p>
+            <p>2019   Completed The Web Developer Bootcamp Course by Colt Steele</p>
+            <p>2013 - 2018   Federal Government College Ijanikin Lagos. 'O' Level '(Tech)'</p>
+        </div>
+        <div class="skills">
+            <h3>Skills</h3>
+            <p>Problem-solving:   Experienced</p>
+            <p>Teamwork:   Experienced</p>
+            <p>Communication:   Experienced</p>
+            <p>Customer Service:   Reasonably Experienced</p>
+        </div>
+        <div class="technical-skills">
+            <h3>Technical Skills</h3>
+            <p>Frontend:  HTML, CSS, Bootstrap, JavaScript, React.js</p>
+            <p>Backend:   Node.js, Express.js, MongoDb, ejs, mustache </p>
+            <p>Extras:   git/github, yarn, npm, PWA, GCS, cli, postman, heroku e.t.c</p>
+        </div>
+        <div class="hobbies">
+            <h3>Hobbies</h3>
+            <p>Gaming, Football, Chess, Watching Movies/Anime, Travelling, Cooking</p>
+        </div>
+        <div class="languages">
+            <h3>Languages '(spoken hierachially)'</h3>
+            <p>English, Native'(Igbo)', French, Yoruba'(small :)'</p>
+        </div>
+        <div class="interests">
+            <h3>Interests</h3>
+            <p>Sports, Music, Photography, Aviation</p>
+        </div>
+        <p>Thanks for coming all the way here, don't forget to leave a feedback.</p>
+
+        <form id="contact-form" action="send" method="POST" enctype = "multipart/form-data">
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">First Name</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="lname">Last Name</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="mail">Email</label>
+                </div>
+                <div class="col-75">
+                    <input type="email" id="mail" name="email" placeholder="example@email.com">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="subject">Subject</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="subject" name="subject" placeholder="Enter Subject...">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="message">Message</label>
+                </div>
+            <div class="col-75">
+                <textarea id="message" name="message" placeholder="Write something.." style="height:200px"></textarea>
+            </div>
+            </div>
+            <div class="row">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+    <script>
+        //get the form by its id
+        const form = document.getElementById("contact-form"); 
+
+        //1.
+        const formEvent = form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            //2.
+            let mail = new FormData(form);
+            //3.
+            const sendMail = (mail) => {
+                //1.
+                fetch("/send", {
+                    method: "post", //2.
+                    body: mail, //3.
+
+                }).then((response) => {
+                    return response.json();
+                });
+            };
+            sendMail(mail);
+            alert("Your message has been sent")
+        })
+
+    </script>
+</body>
+</html>
